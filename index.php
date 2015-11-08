@@ -18,7 +18,7 @@ if( ! empty( $_SESSION["cart_items"] ) ) {
 
 //Validation error vars. If populated, will show on add product form
 $validation_error = null;
-$validation_name = null;
+$validation_name  = null;
    
 //Was the form submitted?
 if( ! empty( $_POST["update_cart_action"] ) ) {
@@ -80,19 +80,21 @@ if( ! empty( $_POST["update_cart_action"] ) ) {
                     //Double check to be sure item actually exists
                     if ( array_key_exists( $cart_item_key, $items ) ) {
                     
-                        //Check for positive qty
-                        if ( $cart_item['qty'] > 0 ) {
-                            
-                            //Update the qty on the item
-                            $items[$cart_item_key]["qty"] = $cart_item['qty'];   
-                                                     
-                        } else {
-                            
-                            //remove the item if the qty is less than zero
-                            unset( $items[$cart_item_key] );
-                            
-                        }
-                        
+                        //just make sure the qty is a number, ignore it if not.
+                        if ( is_numeric( $cart_item['qty'] ) ) {
+                            //Check for positive qty
+                            if ( $cart_item['qty'] > 0 ) {
+                                
+                                //Update the qty on the item
+                                $items[$cart_item_key]["qty"] = $cart_item['qty'];   
+                                                         
+                            } else {
+                                
+                                //remove the item if the qty is less than zero
+                                unset( $items[$cart_item_key] );
+                                
+                            }
+                        }                        
                     }                        
                     
                 }
@@ -159,15 +161,15 @@ $cart = new cart( $items );
                     <?php if ( $cart->get_items() ): ?>                                        
                     <table class="cart-table">
                         <colgroup>
-                            <col width="1">
-                            <col width="1">
-                            <col width="1">
-                            <col width="1">
-                            <col width="1">                        
+                            <col width="30%">
+                            <col width="17.5%">
+                            <col width="17.5%">
+                            <col width="17.5%">
+                            <col width="17.5%">                        
                         </colgroup>
                         <thead>
                             <tr>
-                                <th class="a-left" rowspan="1">Product</th>
+                                <th class="a-left" rowspan="1">Product Name</th>
                                 <th class="a-right" rowspan="1">Price</th>                            
                                 <th class="a-center" rowspan="1">Qty</th>                            
                                 <th class="a-right" rowspan="1">Subtotal</th>
@@ -201,8 +203,8 @@ $cart = new cart( $items );
                                                 <td class="a-right"><?php echo '$' . number_format( $cart->get_tax(), 2 ); ?></td>
                                             </tr>  
                                             <tr>
-                                                <td class="a-right">Shipping:</td>
-                                                <td class="a-right"><?php echo '$' . number_format( $cart->get_shipping(), 2 ); ?></td>
+                                                <td class="a-right">Shipping</td>
+                                                <td class="a-right"><?php echo $cart->get_shipping() > 0 ? '$' . number_format( $cart->get_shipping(), 2 ) : " Free!"; ?></td>
                                             </tr>                                                                                                                            
                                         </tbody>                                    
                                     </table>
