@@ -215,7 +215,7 @@ $cart = new cart( $items );
                             <?php foreach ( $cart->get_items() as $item_key => $item ): ?>
                             <tr>
                                 <td class="a-left">
-                                    <?= $item['name']; ?>
+                                    <?php echo $item['name']; ?>
                                 </td>
                                 <td class="a-right">
                                     <?php echo '$' . number_format( $item['price'], 2 ); ?>           
