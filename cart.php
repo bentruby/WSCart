@@ -58,21 +58,21 @@ class cart {
     * 
     * expects an array like so:
     * $items = array(
-            
-            0 => array(
-                'name'     => 'TEST',
-                'qty'      => 1,
-            ),
-            1 => array(
-                'name'     => 'TEST2',
-                'qty'      => 3,
-            ),   
-            2 => array(
-                'name'     => 'TEST3',
-                'qty'      => 10,
-            ),         
-
-        );
+    *        
+    *        0 => array(
+    *            'name'     => 'TEST',
+    *            'qty'      => 1,
+    *        ),
+    *        1 => array(
+    *            'name'     => 'TEST2',
+    *            'qty'      => 3,
+    *        ),   
+    *        2 => array(
+    *            'name'     => 'TEST3',
+    *            'qty'      => 10,
+    *        ),         
+    *
+    *    );
     * 
     * @param array $items
     */
