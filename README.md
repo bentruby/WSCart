@@ -23,7 +23,7 @@ Download the code and place it in the web root of your server. You will want to 
 
 The application can be run by visiting the web root in a web browser. The file to run is index.php, which is the typical default file for php applications. In the web browser, you will simply need to access the ServerName configured in the Virtual Host (Mapped to the server via hosts file if no DNS is configured). If accessing locally, all that is needed is to visit http://localhost:80/ in the browser (changing port if configured differently). 
 
-If there are any questions or issues arise, please contact me directly (bentruby@gmail.com)
+If there are any questions or issues arise, please contact me directly
 
 Thank You,
 
